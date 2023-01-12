@@ -1,0 +1,49 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: roboto;
+    background-color: #F0F2F5;
+}
+.main-container{
+    display: flex;
+    gap:30px;
+    margin-top: 200px;
+    width: 100vw;
+    justify-content: space-around;
+   
+}
+.main-container-wellcome{
+    display:  flex;
+    flex-direction:column;
+    padding-left: 15%;
+}
+.main-container-wellcome img{
+    width: 400px;
+    height: 160px;
+}
+.main-container-wellcome h1{
+    font-size: 20px;
+}
+.main-container-form{
+    position: relative;
+    width: 60%;
+padding-left: 10%;
+padding-right: 10%;
+}
+.forget_pass{
+    position: absolute;
+    left: 250px;
+    top:160px
+}
+.popup-create_post_overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #cfccccaa;
+   
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./login.css">
+    <!-- Font Awesome -->
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css"
+rel="stylesheet"
+/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-container">
+        <div class="main-container-wellcome">
+            <img src="../image/logo-facebookpng-32251.png" alt="">
+            <h1>Facebook giúp bạn kết nối và chia sẻ với mọi người trong cuộc sống của bạn.</h1>
+        </div>
+        <div class="main-container-form d-flex flex-column ">
+            <form class="form-login">
+                <div class="mb-2">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required> 
+                </div>
+                <div class="err_email_login text-danger"></div>
+                <div class="mb-2">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input name="password" type="password" class="form-control" id="exampleInputPassword1" required>
+                </div>
+                <div class="err_password_login text-danger mb-1"></div>
+                <button type="submit" class="btn btn-primary w-100 h-10 mb-3">Submit</button><br>
+                
+              </form>
+              <a href="" class="text-primary mt-10 m-5 forget_pass mt-5">Quên mật khẩu?</a>
+              <button class="btn btn-danger mt-5 w-100 h-10 btn-signin"> Tạo Tài Khoản Mới</button>
+        </div>
+    </div>
+    <div class="popup-create_post_overlay" style="display:none" >
+      <div class="container h-100">
+        
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-lg-12 col-xl-6">
+            <div class="card text-black position-relative" style="border-radius: 25px;">
+              <i class="fas fa-times-circle fs-1 position-absolute top-0 end-0"></i>
+              <div class="card-body p-md-5">
+                <!-- <div class="row justify-content-center"> -->
+                  <div class="col-md-10 col-lg-6 col-xl-12 order-2 order-lg-1">
+    
+                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+    
+                    <form class="mx-1 mx-md-4 form-signup" >
+    
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input name="username" type="text" id="form3Example1c" class="form-control" required/>
+                          <label class="form-label" for="form3Example1c">Username</label>
+                          
+                        </div>
+                        
+                      </div>
+                      <div class="err_username text-danger mb-3"></div>
+
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fa-brands fa-vine me-3 fa-fw fa-lg"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input name="displayName" type="text" id="form3Example1c" class="form-control" required/>
+                          <label class="form-label" for="form3Example1c">Your name which you want to display</label>
+                          
+                        </div>
+                        
+                      </div>
+                      
+    
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                        <input name="email" type="email" id="form3Example3c" class="form-control" required/>
+                          <label class="form-label" for="form3Example3c">Your Email</label>
+                        </div>
+                      </div>
+                      <div class="err_email text-danger ms-3"></div>
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input name="password" type="password" id="form3Example4c" class="form-control" required/>
+                          <label class="form-label" for="form3Example4c">Password</label>
+                        </div>
+                      </div>
+    
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input name ="repassword" type="password" id="form3Example4cd" class="form-control" required />
+                          <label class="form-label" for="form3Example4cd">Repeat your password</label>
+                        </div>
+                      </div>
+                      <div class="err_pass text-danger ms-3"></div>
+                      
+    
+                      <!-- <div class="form-check d-flex justify-content-center mb-5">
+                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                        <label class="form-check-label" for="form2Example3">
+                          I agree all statements in <a href="#!">Terms of service</a>
+                        </label>
+                      </div> -->
+    
+                      <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                        <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                      </div>
+    
+                    </form>
+    
+                  </div>
+                  <!-- <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+    
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                      class="img-fluid" alt="Sample image">
+    
+                  </div> -->
+                <!-- </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+<script src="./login.js"></script>
+<!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"
+></script>
+</html>
+

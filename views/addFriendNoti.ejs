@@ -1,0 +1,10 @@
+<div class="noti_item_addFriend " >
+    <img class="img-noti-feature" src="<%= noti.avatar %>" alt="">
+    <div class="body-content-noti">
+        <p style="font-size:14px;margin-bottom: 0px;"><a href="/user/<%= noti.sender_noti %>" style="text-decoration: none;color:black; font-weight: 700"><%= noti.display_name %></a> đã gửi cho bạn lời mời kết bạn</p>
+        <div class="d-flex gap-5 mt-2 w-75 justify-content-between">
+            <button class="btn btn-primary accept-friend" id="<%= noti.sender_noti %>">Accept</button>
+            <button class="btn btn-signin decline-request" id="<%= noti.sender_noti %>">Decline</button>
+        </div>
+    </div>
+</div>
