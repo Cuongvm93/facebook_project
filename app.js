@@ -26,7 +26,7 @@ const MySQLStore = require('express-mysql-session')(session);
 const {getAllPost,getOptionPost}=require("./model/post.model")
 const {getOneUser}=require("./model/user.model")
 const {getAllFriend}=require("./model/friend.model")
-const {getAllComment}= require("./model/comment.model")
+const {getAllComment,getCountCmt}= require("./model/comment.model")
 const {postloved}=require("./model/love.model")
 const { promise } = require("bcrypt/promises")
 
@@ -68,7 +68,7 @@ app.get("/user/:id",(req,res)=>{
         relation="me"
     }
     
-     Promise.all([getOneUser(req.params.id), getAllFriend(req.params.id),getOptionPost(req.params.id),getOneUser(req.cookies.cookieToken.id_user) ])
+     Promise.all([getOneUser(req.params.id), getAllFriend(req.params.id),getOptionPost(req.params.id),getOneUser(req.cookies.cookieToken.id_user),getCountCmt() ])
      .then(data=>{
         // console.log(data[0][0]);
         // console.log(data[1][0]);
@@ -90,7 +90,15 @@ app.get("/user/:id",(req,res)=>{
         }else{
             allpost=data[2][0]
         }
-        console.log(relation);
+        for(let index=0;index<allpost.length; index++){
+            let find= data[4][0].find(item=>{
+                return item.id_post== allpost[index].id_post
+            })
+            if(find){
+                allpost[index]['number_cmt']= find.numberCmt
+            }
+        }
+        console.log(allpost);
         // console.log(allpost);
         res.render("profile",{dataProfile:data[0][0][0],friend:data[1][0], relation:relation,dataPost:allpost, viewer:data[3][0][0]})
      })    

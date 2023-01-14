@@ -25,10 +25,13 @@ rel="stylesheet"
             <span><i class="fa-solid fa-magnifying-glass"></i></span>
             <input type="text" placeholder="Search Facebook">
         </div>
-        <div class="header-user">
-            <div><i class="fa-solid fa-bell"></i></div>
-            <div><i class="fa-brands fa-facebook-messenger"></i></div>
-            <a href="/user/<%= viewer.id_user %>"><img src="<%= viewer.avatar %>" alt=""></a>
+        <div class="header-user" id="<%= viewer.display_name%>">
+            <div class=" div bell-notifi" id="<%= viewer.id_user %>" ><i class="fa-solid fa-bell"></i></div>
+            <div class="dropdow-noti_menu">
+
+            </div>
+            <div class="div"><i class="fa-brands fa-facebook-messenger"></i></div>
+            <a href="/user/<%= viewer.id_user %>" class="avatar-user-login" id="<%= viewer.id_user %>"><img src="<%= viewer.avatar %>" alt=""></a>
 
         </div>
     </div>
@@ -133,23 +136,26 @@ rel="stylesheet"
                                        
                                     </div>
                                     <div class="comment">
-                                        <%if(dataPost[index].comment!=null){%>
-                                            <p><%= dataPost[index].comment %> comments</p>
+                                        <%if(dataPost[index].number_cmt!=null){%>
+                                            <p><%= dataPost[index].number_cmt %> comments</p>
                                             <%}%>
                                     </div>
                                 </div>
                                 <div class="post_footer_button">
-                                 <div><i class="fa-sharp fa-solid fa-heart"></i> &nbsp Love</div>
+                                 <div class="btn-love-post" id="<%= dataPost[index].id_post %>"><i class="fa-sharp fa-solid fa-heart"></i> &nbsp Love</div>
                                  <div><i class="fa-sharp fa-solid fa-comment"></i>&nbsp  Comment</div>
                                  <div><i class="fa-sharp fa-solid fa-share"></i> &nbsp Share</div>
                                 </div>
                                 <div class="post-footer-conmment-container">
-                                    <div class="write-comment">
+                                    <div class="write-comment" id="<%= viewer.id_user %>">
                                         <img src="<%= viewer.avatar %>" alt="">
-                                        <input type="text" placeholder="comment something...">
+                                        <input id="<%= dataPost[index].id_post %>" class="write-comment-input" type="text" placeholder="comment something...">
                                     </div>
-                                    <!-- <div class="view-comment">
-                                        <div class="comment-compoment">
+                                     <div class="view-comment">
+                                        <%if(dataPost[index].number_cmt){%>
+                                            <p id="<%= dataPost[index].id_post %>" class="view-more-cmt" style=" color: rgb(31, 135, 226);width: 100%;padding-left: 37%;">View Comment</p>
+                                            <%}%>
+                                        <!-- <div class="comment-compoment">
                                             <img src="../image/190108336_322648402555040_2100790391455013605_n.jpg" alt="">
                                             <div class="content-container">
                                                 <p class="username"> Cristiano Ronaldo</p>
@@ -162,8 +168,8 @@ rel="stylesheet"
                                                 <p class="username"> Floyd Mayweather</p>
                                                 <p class="content">Make money man!</p>
                                             </div>
-                                        </div>
-                                    </div> -->
+                                        </div> -->
+                                    </div> 
                                 </div>
                             </div>
                         </div>

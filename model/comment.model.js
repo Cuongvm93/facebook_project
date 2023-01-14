@@ -30,3 +30,6 @@ module.exports.getAllComment=async (id_user)=>{
 module.exports.getSelectComment=(id_post)=>{
     return db.execute(`select a.id_comment, a.id_post, a.id_sender, a.comment,b.display_name, b.avatar, a.time from (select * from comment where id_post="${id_post}") as a, user as b where a.id_sender=b.id_user order by a.time desc`)
 }
+module.exports.getCountCmt= ()=>{
+    return db.execute(`select count(id_post) as numberCmt, id_post from comment group by id_post`)
+}

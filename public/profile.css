@@ -50,7 +50,7 @@ body{
         gap: 20px;
         padding-right:30px;
     }
-    .header-user div{
+    .header-user .div{
         display: flex;
         width: 40px;
         height: 40px;
@@ -60,6 +60,77 @@ body{
         align-items: center;
         cursor: pointer;
     }
+    .dropdow-noti_menu {
+        z-index: 100000;
+        display:  none;
+        flex-direction: column;
+        position: absolute;
+        border-radius: 5px;
+        background-color: white;
+        box-shadow: 0.5px 0.5px black;
+        top:60px;
+        right: 60px;
+        width: 20vw;
+        flex-direction: column;
+        max-height: 600px;
+        border:1px solid gray;
+        gap:5px;
+        max-height: 600px;
+        overflow-y: auto;
+     }
+     .dropdown-noti_menu :hover{
+        background-color: white;
+     }
+     .active-noti{
+        display: flex;
+
+     }
+     .active-bell{
+        color: #0e8be4;
+     }
+     .noti_item_addFriend{
+        display: flex;
+        padding:5px;
+        gap:10px;
+        box-sizing: border-box;
+        
+    
+     }
+     .noti_item_react{
+        display:flex;
+        padding: 5px;
+        gap: 10px;
+     }
+     .noti_item_cmt{
+        display: flex;
+        padding: 5px;
+        gap:10px
+     }
+     .noti-item-react-feature{
+        position: relative;
+     }
+     .react-noti-icon{
+        position:absolute;
+        color: rgb(235, 38, 94);
+        bottom: 3px;
+        right: -5px;
+        
+     }
+     .cmt-noti-icon{
+        position: absolute;
+        position:absolute;
+        color: rgb(20, 184, 107);
+        bottom: 3px;
+        right: -5px;
+     }
+     .dropdown-noti_menu div{
+        border: none;
+        box-sizing: border-box;
+     }
+     .dropdow-noti_menu div:hover{
+        background-color: rgb(178, 176, 176);
+        cursor: pointer;
+     }
     .header-user div:hover{
         background-color: gainsboro;
     }
@@ -366,7 +437,9 @@ body{
                         }
                         .comment-compoment .content-container .username{
                             color:black;
-                            font-weight: 800;
+                            font-weight: 600;
+                            margin-bottom:6px ;
+                            margin-bottom: 0;
                         }
                         .comment-compoment .content {
                             font-size: 15px;

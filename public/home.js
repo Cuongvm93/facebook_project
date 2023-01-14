@@ -171,7 +171,7 @@ btn_bell.addEventListener("click",()=>{
   document.querySelector(".dropdow-noti_menu").classList.toggle("active-noti")
   console.log(btn_bell.childNodes[0]);
   btn_bell.childNodes[0].classList.toggle("active-bell")
-  fetch(`api/v1/noti/${btn_bell.id}`)
+  fetch(`/api/v1/noti/${btn_bell.id}`)
   .then(res=>res.json())
   .then(data=>{
     let string=""
