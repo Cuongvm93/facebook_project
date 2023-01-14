@@ -23,9 +23,9 @@
             <input type="text" placeholder="Search Facebook">
         </div>
         <div class="header-user">
-            <div class=" div bell-notifi"><i class="fa-solid fa-bell"></i></div>
+            <div class=" div bell-notifi" id="<%= owner.id_user %>"><i class="fa-solid fa-bell"></i></div>
             <div class="dropdow-noti_menu">
-                <%if(noti.length==0){%>
+                <!-- <%if(noti.length==0){%>
                     <p style="width:100%;padding:20px">You have no notification!</p>
                     <%}else{%>
                 <%for(let index=0; index < noti.length; index++){%>
@@ -37,7 +37,7 @@
                             <%- include('cmtNoti',{noti:noti[index]})%>
                             <%}%>
                     <%}%>
-                    <%}%>
+                    <%}%> -->
             </div>
             <div class="div"><i class="fa-brands fa-facebook-messenger"></i></div>
             <a href="/user/<%= owner.id_user %>" class="id_user_owner" id="<%= owner.id_user %>"><img src="<%= owner.avatar %>" alt=""></a>
@@ -91,7 +91,9 @@
                             <div class="post-footer_reaction">
                                 <div class="reaction">
                                   
-                                       <span> <i class="fa-solid fa-heart"></i>
+                                       <span> 
+                                        <i class="fa-solid fa-heart"></i>
+                                              
                                         <%if(dataPost[index].love!="null"){%>
                                             <%= dataPost[index].love %>
                                            <%}%>
@@ -99,23 +101,38 @@
                                    
                                 </div>
                                 <div class="comment">
-                                    <%if(dataPost[index].comment!=null){%>
-                                        <p><%= dataPost[index].comment %> comments</p>
+                                    <%if(dataPost[index].number_cmt!=null){%>
+                                        <p><%= dataPost[index].number_cmt %> comments</p>
                                         <%}%>
+
+                                           
                                 </div>
                             </div>
                             <div class="post_footer_button">
-                             <div><i class="fa-sharp fa-solid fa-heart"></i> &nbsp Love</div>
+                                <%let indexOfid_post=postLoved.indexOf(dataPost[index].id_post)%>
+                                <%if(indexOfid_post != -1){%>
+                                    <div class="btn-love-post" style="color:red" id="<%= dataPost[index].id_post %>"><i class="fa-sharp fa-solid fa-heart"></i> &nbsp Love</div>
+                                    <%}else{%>
+                                        <div class="btn-love-post" id="<%= dataPost[index].id_post %>"><i class="fa-sharp fa-solid fa-heart"></i> &nbsp Love</div>
+                                        <%}%>
+                                
+                                                
+                            <div class="btn-love-post" id="<%= dataPost[index].id_post %>"><i class="fa-sharp fa-solid fa-heart"></i> &nbsp Love</div>
+                                                    
+                             
                              <div><i class="fa-sharp fa-solid fa-comment"></i>&nbsp  Comment</div>
                              <div><i class="fa-sharp fa-solid fa-share"></i> &nbsp Share</div>
                             </div>
                             <div class="post-footer-conmment-container">
-                                <div class="write-comment">
+                                <div class="write-comment" id="<%= owner.id_user %>">
                                     <img src="<%= owner.avatar %>" alt="">
-                                    <input type="text" placeholder="comment something...">
+                                    <input id="<%= dataPost[index].id_post %>" class="write-comment-input" type="text" placeholder="comment something..." >
                                 </div>
-                                <!-- <div class="view-comment">
-                                    <div class="comment-compoment">
+                                 <div class="view-comment">
+                                    <%if(dataPost[index].number_cmt){%>
+                                        <p id="<%= dataPost[index].id_post %>" class="view-more-cmt" style=" color: rgb(31, 135, 226);width: 100%;padding-left: 37%;">View Comment</p>
+                                        <%}%>
+                                    <!-- <div class="comment-compoment">
                                         <img src="../image/190108336_322648402555040_2100790391455013605_n.jpg" alt="">
                                         <div class="content-container">
                                             <p class="username"> Cristiano Ronaldo</p>
@@ -127,9 +144,9 @@
                                         <div class="content-container">
                                             <p class="username"> Floyd Mayweather</p>
                                             <p class="content">Make money man!</p>
-                                        </div>
-                                    </div>
-                                </div> -->
+                                        </div> -->
+                                    <!-- </div> -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -186,7 +203,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-storage-compat.js"></script>
-<script src="./home.js"></script>
+<script src="/home.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 </html>

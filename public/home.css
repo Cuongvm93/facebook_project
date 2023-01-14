@@ -72,7 +72,9 @@ body{
         flex-direction: column;
         max-height: 600px;
         border:1px solid gray;
-        gap:5px
+        gap:5px;
+        max-height: 600px;
+        overflow-y: auto;
      }
      .dropdown-noti_menu :hover{
         background-color: white;
@@ -122,6 +124,10 @@ body{
      .dropdown-noti_menu div{
         border: none;
         box-sizing: border-box;
+     }
+     .dropdow-noti_menu div:hover{
+        background-color: rgb(178, 176, 176);
+        cursor: pointer;
      }
     /* .main-notifi{
         width: 400px;
@@ -338,10 +344,16 @@ body{
                         }
                         .comment-compoment .content-container .username{
                             color:black;
-                            font-weight: 800;
+                            font-weight: 600;
+                            margin-bottom:6px ;
                         }
                         .comment-compoment .content {
                             font-size: 15px;
+                            margin-bottom: 0;
+                        }
+                        .view-more-cmt:hover{
+                            cursor: pointer;
+                            color: rgb(19, 165, 165);
                         }
 .popup-create_post_overlay{
     position: fixed;

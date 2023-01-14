@@ -1,4 +1,4 @@
-const {createOneNoti,deleteOne}=require("../model/noti.model")
+const {createOneNoti,deleteOne,getNoti}=require("../model/noti.model")
 module.exports.createOneNoti= async(req,res)=>{
     try{
         console.log(req.body);
@@ -16,6 +16,16 @@ module.exports.deleteOne= async(req,res)=>{
         res.status(200).json({
             Message:"success!"
         })
+    }
+    catch(err)
+    {
+        res.status(500).json(err)
+    }
+}
+module.exports.getNoti=async (req,res)=>{
+    try{
+        let [result]=await getNoti(req.params.id)
+        res.status(200).json(result)
     }
     catch(err)
     {
