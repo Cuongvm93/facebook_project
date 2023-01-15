@@ -1,3 +1,5 @@
+
+
 const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyCigSIgQRvhDCYQljwPQxDqujiw_VvW0B8",
     authDomain: "ecomerce-project-f455c.firebaseapp.com",
@@ -362,5 +364,24 @@ btn_love.forEach(item=>{
         sender:id_user_owner
       })
     })     
+  })
+})
+
+// log out
+let userIconPro=document.querySelector(".id_user_owner")
+userIconPro.addEventListener("mouseover",()=>{
+  document.querySelector(".controller-user").classList.add("active-logout")
+  document.querySelector("body").addEventListener("click",()=>{
+    document.querySelector(".controller-user").classList.remove("active-logout")
+  })
+})
+document.querySelector(".controller-user").addEventListener("click",()=>{
+  fetch("/logout")
+  .then(res=>res.json())
+  .then(data=>{
+    console.log(data);
+    if (data.status) {
+      window.location.href="http://localhost:3000/"
+    }
   })
 })

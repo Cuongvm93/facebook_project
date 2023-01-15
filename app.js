@@ -98,7 +98,7 @@ app.get("/user/:id",(req,res)=>{
                 allpost[index]['number_cmt']= find.numberCmt
             }
         }
-        console.log(allpost);
+        console.log(data[0][0][0]);
         // console.log(allpost);
         res.render("profile",{dataProfile:data[0][0][0],friend:data[1][0], relation:relation,dataPost:allpost, viewer:data[3][0][0]})
      })    
@@ -137,7 +137,13 @@ app.get("/login",(req,res)=>{
 // app.get("/home",(req,res)=>{
 //     res.sendFile("home.html",{root:"./public"})
 // })
-
+app.get("/logout",(req,res)=>{
+    res.clearCookie("cookieToken")
+    res.status(200).json({
+        status:"success!"
+    })
+    res.end()
+})
 
 http.listen(port,()=>{
     console.log(`server is running on http://localhost/${port}`);

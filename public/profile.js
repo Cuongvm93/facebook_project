@@ -23,6 +23,18 @@ if(btn_editInfo!= undefined){
     btn_editInfo.addEventListener("click",()=>{
         document.querySelector(".popup-edit-info_overlay").style.display="block"
         document.querySelector("body").style.overflow="hidden"
+        // fetch(`/api/v1/user/${btn_editInfo.id}`)
+        // .then(res=>res.json())
+        // .then(data=>{
+        //     console.log(data);
+        //     document.querySelector(".preview-avatar").src=data.avatar
+        //     document.querySelector(".preview-cover").src=data.cover
+        //     document.querySelector(".edit-name").value=data.display_name
+        //     document.querySelector(".edit-work").value=data.work
+        //     document.querySelector(".edit-study").value=data.school
+        //     document.querySelector(".edit-live").value=data.live
+        //     document.querySelector("#edit-dating").value=data.dating
+        // })
     })
 }
 btn_cancelEdit.onclick=()=>{
@@ -309,5 +321,24 @@ btn_love.forEach(item=>{
         sender:id_user_owner
       })
     })     
+  })
+})
+
+// log out
+let userIconPro=document.querySelector(".avatar-user-login")
+userIconPro.addEventListener("mouseover",()=>{
+  document.querySelector(".controller-user").classList.add("active-logout")
+  document.querySelector("body").addEventListener("click",()=>{
+    document.querySelector(".controller-user").classList.remove("active-logout")
+  })
+})
+document.querySelector(".controller-user").addEventListener("click",()=>{
+  fetch("/logout")
+  .then(res=>res.json())
+  .then(data=>{
+    console.log(data);
+    if (data.status) {
+      window.location.href="http://localhost:3000/"
+    }
   })
 })

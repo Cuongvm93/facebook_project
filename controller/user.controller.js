@@ -1,4 +1,4 @@
-const{getAllUser,addUser,updateUser}= require("../model/user.model")
+const{getAllUser,addUser,updateUser,getOneUser}= require("../model/user.model")
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
@@ -52,6 +52,16 @@ module.exports.updateUser= async (req,res)=>{
         })
     }
     catch(err){
+        res.status(500).json(err)
+    }
+}
+module.exports.getOneUser= async(req,res)=>{
+    try{
+        let [resutl]= await getOneUser(req.params.id)
+        res.status(200).json(result)
+    }
+    catch(err)
+    {
         res.status(500).json(err)
     }
 }

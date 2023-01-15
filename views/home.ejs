@@ -20,7 +20,10 @@
         </svg></a>
         <div class="header-search">
             <span><i class="fa-solid fa-magnifying-glass"></i></span>
-            <input type="text" placeholder="Search Facebook">
+            <input class="search-container" type="text" placeholder="Search Facebook">
+            <div class="search-result">
+                
+            </div>
         </div>
         <div class="header-user">
             <div class=" div bell-notifi" id="<%= owner.id_user %>"><i class="fa-solid fa-bell"></i></div>
@@ -41,6 +44,13 @@
             </div>
             <div class="div"><i class="fa-brands fa-facebook-messenger"></i></div>
             <a href="/user/<%= owner.id_user %>" class="id_user_owner" id="<%= owner.id_user %>"><img src="<%= owner.avatar %>" alt=""></a>
+            <div class="controller-user">
+               
+           
+                <i class="fa-solid fa-right-from-bracket"></i>
+           
+                <p>Log Out</p>
+            </div>
 
         </div>
     </div>
@@ -204,6 +214,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-storage-compat.js"></script>
 <script src="/home.js"></script>
+<script src="/search.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 </html>
