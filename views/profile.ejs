@@ -127,11 +127,45 @@ rel="stylesheet"
                             </div>
                             <div class="post-content"><%= dataPost[index].content %></div>
                             <div class="post-body">
-                               <%if(dataPost[index].photo!="null"){%>
-                                <%for(let i=0;i<dataPost[index].photo.length;i++){%>
-                                    <img src="<%= dataPost[index].photo[i] %>" alt="">
-                                    <%}%>
-                               <%}%>
+                                <%if(dataPost[index].photo!=null){%>
+                                    <div class="post-body-media">
+                                    <%if(dataPost[index].photo.length==1){%>
+                                        <div class="grid-item grid-item-1">
+                                            <img src="<%= dataPost[index].photo[0] %>" alt="">
+                                           </div>
+                                        <%}else if(dataPost[index].photo.length==2){%>
+                                            <div class="grid-item grid-item-1-1">
+                                                <img src="<%= dataPost[index].photo[0] %>" alt="">
+                                               </div>
+                                               <div class="grid-item grid-item-1-2">
+                                                <img src="<%= dataPost[index].photo[1] %>" alt="">
+                                               </div>
+                                            <%}else if(dataPost[index].photo.length==3){%>
+                                            <div class="grid-item grid-item-3-1">
+                                            <img src="<%= dataPost[index].photo[0] %>" alt="">
+                                            </div>
+                                            <div class="grid-item grid-item-3-2">
+                                             <img src="<%= dataPost[index].photo[1] %>" alt="">
+                                            </div>
+                                            <div class="grid-item grid-item-3-3">
+                                                <img src="<%= dataPost[index].photo[1] %>" alt="">
+                                               </div>
+                                                <%}else if(dataPost[index].photo.length==4){%>
+                                                    <div class="grid-item grid-item-4-1">
+                                                    <img src="<%= dataPost[index].photo[0] %>" alt="">
+                                                    </div>
+                                                    <div class="grid-item grid-item-4-2">
+                                                     <img src="<%= dataPost[index].photo[1] %>" alt="">
+                                                    </div>
+                                                    <div class="grid-item grid-item-4-3">
+                                                        <img src="<%= dataPost[index].photo[2] %>" alt="">
+                                                       </div>
+                                                       <div class="grid-item grid-item-4-4">
+                                                        <img src="<%= dataPost[index].photo[3] %>" alt="">
+                                                       </div>
+                                                    <%}%>
+                                                    </div>
+                                                    <%}%>
                             </div>
                             <div class="post-footer">
                                 <div class="post-footer_reaction">
@@ -151,6 +185,10 @@ rel="stylesheet"
                                     </div>
                                 </div>
                                 <div class="post_footer_button">
+                                    <%let id=postLoved.indexOf(dataPost[index].id_post)%>
+                                    <%if(id!=-1){%>
+                                        <div class="btn-love-post" id="<%= dataPost[index].id_post %>" style="color:rgb(232, 55, 55)"><i class="fa-sharp fa-solid fa-heart"></i> &nbsp Love</div> 
+                                        <%}%>
                                  <div class="btn-love-post" id="<%= dataPost[index].id_post %>"><i class="fa-sharp fa-solid fa-heart"></i> &nbsp Love</div>
                                  <div><i class="fa-sharp fa-solid fa-comment"></i>&nbsp  Comment</div>
                                  <div><i class="fa-sharp fa-solid fa-share"></i> &nbsp Share</div>

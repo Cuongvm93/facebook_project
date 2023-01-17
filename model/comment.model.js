@@ -12,7 +12,7 @@ module.exports.createCmt= (sender,id_post,content)=>{
  .catch(err=> console.log(err))
 }
 module.exports.getAllComment=async (id_user)=>{
-   let [data1] = await db.execute(`select a.id_post,a.id_owner,a.like,a.haha, a.cry,a.happy, a.content, a.private, a.photo, a.date,b.display_name, b.avatar from(select * from (select * from post where post.id_owner in (select b.id_owner from (select id_owner as id_owner from friend where id_friend="${id_user}" 
+   let [data1] = await db.execute(`select a.id_post,a.id_owner,a.like,a.haha, a.love, a.cry,a.happy, a.content, a.private, a.photo, a.date,b.display_name, b.avatar from(select * from (select * from post where post.id_owner in (select b.id_owner from (select id_owner as id_owner from friend where id_friend="${id_user}" 
     union
     select id_friend from friend where id_owner="${id_user}") as b)) as a union select * from post where id_owner="${id_user}") as a, user as b where a.id_owner =b.id_user and a.private="public" order by a.date desc`)
     // console.log(data1);

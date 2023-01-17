@@ -37,5 +37,16 @@ module.exports.updatePostLove=(id_post)=>{
   .catch(err=>{
     console.log(err);
   })
- 
+}
+module.exports.deleteLovePost=(id_post)=>{
+  db.execute(`select love from post where id_post="${id_post}"`)
+  .then(data=>{
+    console.log(data);
+    
+      return db.execute(`update post set love=love - 1 where id_post="${id_post}"`)
+    
+  })
+  .catch(err=>{
+    console.log(err);
+  })
 }

@@ -1,4 +1,4 @@
-const {addLove,getOwnerOfPost}= require("../model/love.model")
+const {addLove,getOwnerOfPost,deleteLove}= require("../model/love.model")
 const {createOneNoti}=require("../model/noti.model")
 const {updatePostLove }=require("../model/post.model")
 module.exports.addLove=async (req,res)=>{
@@ -10,6 +10,15 @@ module.exports.addLove=async (req,res)=>{
     }
     catch(err)
     {
+        res.status(500).json(err)
+    }
+}
+module.exports.deleteLove=async(req,res,next)=>{
+    try{
+        await deleteLove(req.body.sender,req.body.id_post)
+        next();
+    }
+    catch(err){
         res.status(500).json(err)
     }
 }

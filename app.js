@@ -68,7 +68,7 @@ app.get("/user/:id",(req,res)=>{
         relation="me"
     }
     
-     Promise.all([getOneUser(req.params.id), getAllFriend(req.params.id),getOptionPost(req.params.id),getOneUser(req.cookies.cookieToken.id_user),getCountCmt() ])
+     Promise.all([getOneUser(req.params.id), getAllFriend(req.params.id),getOptionPost(req.params.id),getOneUser(req.cookies.cookieToken.id_user),getCountCmt(),postloved(req.cookies.cookieToken.id_user) ])
      .then(data=>{
         // console.log(data[0][0]);
         // console.log(data[1][0]);
@@ -98,9 +98,10 @@ app.get("/user/:id",(req,res)=>{
                 allpost[index]['number_cmt']= find.numberCmt
             }
         }
+        let arr=data[5][0].map(item=>item.id_post)
         console.log(data[0][0][0]);
         // console.log(allpost);
-        res.render("profile",{dataProfile:data[0][0][0],friend:data[1][0], relation:relation,dataPost:allpost, viewer:data[3][0][0]})
+        res.render("profile",{dataProfile:data[0][0][0],friend:data[1][0], relation:relation,dataPost:allpost, viewer:data[3][0][0],postLoved:arr})
      })    
 })
 app.get("/",(req,res)=>{
@@ -113,7 +114,7 @@ app.get("/",(req,res)=>{
        .then(data=>{
         console.log("post_loved",data[2][0]);
         let arr=data[2][0].map(item=>item.id_post)
-        console.log(arr);
+        console.log(data[0]);
         res.render("home",{dataPost:data[0],owner:data[1][0][0][0],noti:data[1][1][0],postLoved:arr})
        })
 
@@ -144,13 +145,12 @@ app.get("/logout",(req,res)=>{
     })
     res.end()
 })
-
-http.listen(port,()=>{
-    console.log(`server is running on http://localhost/${port}`);
-})
 io.on('connection', (socket) => {
     console.log(`⚡: ${socket.id} user just connected`);
     socket.on('disconnect', () => {
       console.log('A user disconnected');
     });
   });
+http.listen(port,()=>{
+    console.log(`server is running on http://localhost/${port}`);
+})

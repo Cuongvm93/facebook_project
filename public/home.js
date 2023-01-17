@@ -20,6 +20,9 @@ const firebaseApp = firebase.initializeApp({
   input_something.addEventListener("click",(e)=>{
     document.querySelector(".popup-create_post_overlay").style.display="block"
     document.querySelector("body").style.overflow="hidden"
+    // document.querySelector("body").addEventListener("click",()=>{
+    //   document.querySelector(".popup-create_post_overlay").style.display="none  "
+    // })
   })
   console.log(input_something);
   let upload_btn=document.getElementById("upload_btn")
@@ -64,14 +67,19 @@ let id_user_owner=document.querySelector(".id_user_owner").id
 console.log(id_user_owner);
 let post_btn=document.querySelector(".post_btn")
 post_btn.addEventListener("click",()=>{
-    let arrImg_Post=Array.from(imgOfPost).map(item=>item.src)
+  let arrImg_Post
+  if (imgOfPost != undefined) {
+    arrImg_Post=Array.from(imgOfPost).map(item=>item.src)
+  }
+
     console.log(arrImg_Post);
     let data={}
-    if (arrImg_Post[0]==undefined) {
+    if (arrImg_Post==undefined) {
       data={
         content:textOfpost.value,
         private: private.value
       }
+      console.log(data);
     }else{
       data={
         content:textOfpost.value,
@@ -351,10 +359,18 @@ btn_viewcomment.forEach((item,index)=>{
 
 // Love Post
 let btn_love =document.querySelectorAll(".btn-love-post")
-btn_love.forEach(item=>{
+console.log(btn_love);
+btn_love.forEach((item,index)=>{
   item.addEventListener("click",()=>{
+    if(item.style.color!="red"){
+      console.log(111);
+      console.log(index);
+    let currLove=Number(document.getElementsByClassName("countLove")[index].innerHTML)
+    console.log(document.querySelectorAll(".countLove")[index].textContent);
+    currLove++;
+    document.getElementsByClassName("countLove")[index].innerHTML=currLove
     item.style.color="red";
-    fetch(`api/v1/love/${item.id}`,{
+    fetch(`/api/v1/love/${item.id}`,{
       method:"POST",
       headers:{
         "Content-type":"application/json"
@@ -364,6 +380,24 @@ btn_love.forEach(item=>{
         sender:id_user_owner
       })
     })     
+    }else{
+      
+    let currLove=Number(document.getElementsByClassName("countLove")[index].innerHTML)
+    console.log(document.querySelectorAll(".countLove")[index].textContent);
+    currLove--;
+    document.getElementsByClassName("countLove")[index].innerHTML=currLove
+    item.style.color=null
+    fetch(`/api/v1/love`,{
+      method:"DELETE",
+      headers:{
+        "Content-type":"application/json"
+      },
+      body:JSON.stringify({
+        id_post:item.id,
+        sender:id_user_owner
+      })
+    })     
+    }
   })
 })
 

@@ -8,3 +8,6 @@ module.exports.getOwnerOfPost=(id_post)=>{
 module.exports.postloved=(id_user)=>{
     return db.execute(`select id_post from love where sender_love="${id_user}"`)
 }
+module.exports.deleteLove=(sender,id_post)=>{
+    return db.execute(`delete  from love where sender_love="${sender}" and id_post="${id_post}"`)
+}

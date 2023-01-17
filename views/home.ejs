@@ -91,11 +91,45 @@
                         </div>
                         <div class="post-content"><%= dataPost[index].content %></div>
                         <div class="post-body">
-                           <%if(dataPost[index].photo!="null"){%>
-                            <%for(let i=0;i<dataPost[index].photo.length;i++){%>
-                                <img src="<%= dataPost[index].photo[i] %>" alt="">
-                                <%}%>
-                           <%}%>
+                           <%if(dataPost[index].photo!=null){%>
+                            <div class="post-body-media">
+                            <%if(dataPost[index].photo.length==1){%>
+                                <div class="grid-item grid-item-1">
+                                    <img src="<%= dataPost[index].photo[0] %>" alt="">
+                                   </div>
+                                <%}else if(dataPost[index].photo.length==2){%>
+                                    <div class="grid-item grid-item-1-1">
+                                        <img src="<%= dataPost[index].photo[0] %>" alt="">
+                                       </div>
+                                       <div class="grid-item grid-item-1-2">
+                                        <img src="<%= dataPost[index].photo[1] %>" alt="">
+                                       </div>
+                                    <%}else if(dataPost[index].photo.length==3){%>
+                                    <div class="grid-item grid-item-3-1">
+                                    <img src="<%= dataPost[index].photo[0] %>" alt="">
+                                    </div>
+                                    <div class="grid-item grid-item-3-2">
+                                     <img src="<%= dataPost[index].photo[1] %>" alt="">
+                                    </div>
+                                    <div class="grid-item grid-item-3-3">
+                                        <img src="<%= dataPost[index].photo[1] %>" alt="">
+                                       </div>
+                                        <%}else if(dataPost[index].photo.length==4){%>
+                                            <div class="grid-item grid-item-4-1">
+                                            <img src="<%= dataPost[index].photo[0] %>" alt="">
+                                            </div>
+                                            <div class="grid-item grid-item-4-2">
+                                             <img src="<%= dataPost[index].photo[1] %>" alt="">
+                                            </div>
+                                            <div class="grid-item grid-item-4-3">
+                                                <img src="<%= dataPost[index].photo[2] %>" alt="">
+                                               </div>
+                                               <div class="grid-item grid-item-4-4">
+                                                <img src="<%= dataPost[index].photo[3] %>" alt="">
+                                               </div>
+                                            <%}%>
+                                            </div>
+                          <%}%>
                         </div>
                         <div class="post-footer">
                             <div class="post-footer_reaction">
@@ -104,9 +138,10 @@
                                        <span> 
                                         <i class="fa-solid fa-heart"></i>
                                               
-                                        <%if(dataPost[index].love!="null"){%>
+                                        <span class="countLove">
+                                            <%if(dataPost[index].love!=null){%>
                                             <%= dataPost[index].love %>
-                                           <%}%>
+                                           <%}%></span>
                                        </span>
                                    
                                 </div>
@@ -125,9 +160,7 @@
                                     <%}else{%>
                                         <div class="btn-love-post" id="<%= dataPost[index].id_post %>"><i class="fa-sharp fa-solid fa-heart"></i> &nbsp Love</div>
                                         <%}%>
-                                
-                                                
-                            <div class="btn-love-post" id="<%= dataPost[index].id_post %>"><i class="fa-sharp fa-solid fa-heart"></i> &nbsp Love</div>
+                            
                                                     
                              
                              <div><i class="fa-sharp fa-solid fa-comment"></i>&nbsp  Comment</div>
@@ -188,8 +221,7 @@
                       
                 </div>
                 <div class="create_post_body_media">
-                 <div class="media-preview">  <img src="https://firebasestorage.googleapis.com/v0/b/ecomerce-project-f455c.appspot.com/o/153536262_272096204273745_6550378675999778560_n.jpg?alt=media&token=f1ce3bfe-2c6a-4ad6-bc34-20bf54854d55" class="rounded mx-auto d-block" alt="..." ><i class="fa-sharp fa-solid fa-circle-xmark"></i></div>
-                    <img src="https://firebasestorage.googleapis.com/v0/b/ecomerce-project-f455c.appspot.com/o/153536262_272096204273745_6550378675999778560_n.jpg?alt=media&token=f1ce3bfe-2c6a-4ad6-bc34-20bf54854d55" class="rounded mx-auto d-block" alt="...">
+                 <div class="media-preview">  
                 </div>
             </div>
             <div class="create_post_footer">
@@ -215,6 +247,10 @@
 <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-storage-compat.js"></script>
 <script src="/home.js"></script>
 <script src="/search.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<script>
+    var socket = io();
+ </script>
 </html>
