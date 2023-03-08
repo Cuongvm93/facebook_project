@@ -24,11 +24,12 @@ const myPlaintextPassword = 's0/\/\P4$$w0rD';
 const someOtherPlaintextPassword = 'not_bacon';
 const MySQLStore = require('express-mysql-session')(session);
 const {getAllPost,getOptionPost}=require("./model/post.model")
-const {getOneUser}=require("./model/user.model")
+const {getOneUser,updateUserStatus,removeStatus,find_socketId}=require("./model/user.model")
 const {getAllFriend}=require("./model/friend.model")
 const {getAllComment,getCountCmt}= require("./model/comment.model")
 const {postloved}=require("./model/love.model")
 const { promise } = require("bcrypt/promises")
+const { on } = require("events")
 
 
 const options = {
@@ -145,12 +146,45 @@ app.get("/logout",(req,res)=>{
     })
     res.end()
 })
+// real time with socket Io
+let onlineUser=[];
+let addUser=function(username, socketId){
+    !onlineUser.some(item=>item.username === username)&&
+    onlineUser.push({username:username,id:socketId})
+}
+let removeUser=  async function(id){
+    let findIndex=onlineUser.findIndex((item)=>{
+        item.id==id
+    })
+    if (findIndex) {
+        onlineUser.splice(findIndex,1)
+    }
+    
+}
 io.on('connection', (socket) => {
+    socket.on('addUser',async (data)=>{
+        await updateUserStatus(socket.id,"online",data)
+        // addUser(data,socket.id)
+        // console.log(onlineUser);
+    })
     console.log(`⚡: ${socket.id} user just connected`);
-    socket.on('disconnect', () => {
-      console.log('A user disconnected');
-    });
-  });
+    socket.on('disconnect', async () => {
+     await removeStatus(socket.id)
+      console.log(socket.id,' user disconnected');
+      console.log(onlineUser);
+    })
+    socket.on('lovepost',async (data)=>{
+        // let getid= onlineUser.find((item)=>{
+        //     return item.username === data.reciver
+        // })
+        // let id= getid.id
+        console.log(22222);
+        let [result] = await find_socketId(data.reciver)
+        console.log( result[0].socket_id);
+        io.to(result[0].socket_id).emit('getnotifiLove',data)
+    })
+});
+ 
 http.listen(port,()=>{
     console.log(`server is running on http://localhost/${port}`);
 })

@@ -667,3 +667,52 @@ body{
     grid-row-end: 9;
     object-fit: cover;
 }
+
+
+.toast:not(.show){
+    display: block;
+}
+.toat{
+
+    width: 380px;
+    position: fixed;
+    /* transform: translate(-50%,-50%); */
+    bottom: 20px;
+    left: 10px;
+    height: 80px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 7px;
+    display: grid;
+    grid-template-columns: 1.3fr 6fr 0.5fr;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    gap: 20px
+}
+.info{
+    border-left: 3px solid #2F86EB;
+}
+.toat button{
+    align-self: flex-start;
+    background-color: transparent;
+    font-size: 20px;
+    color: #656565;
+    line-height: 0;
+    cursor: pointer;
+    margin-right:-30px;
+    border: none;
+}
+.outer-container img{
+    width: 50px;
+    height: 50px;
+    border-radius: 40px;
+}
+.inner-container p:first-child{
+    color: #101020;
+    font-weight: 600;
+    font-size: 16px;
+}
+.inner-container p:last-child{
+    font-size: 12px;
+    font-weight: 400;
+    color: #656565;
+}

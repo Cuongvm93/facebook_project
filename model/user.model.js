@@ -16,3 +16,12 @@ module.exports.updateUser=(avatar,cover,displayName,work,study,live,dating,id_us
 module.exports.getOneUser=(id_user)=>{
     return db.execute(`select * from user where id_user="${id_user}"`)
 }
+module.exports.updateUserStatus=(id, status,id_user)=>{
+    return db.execute(`update user set socket_id=?, status=? where id_user="${id_user}"`,[id,status])
+}
+module.exports.removeStatus=(socket_id)=>{
+    return db.query(`update user set socket_id="", status="offline" where socket_id="${socket_id}"`)
+}
+module.exports.find_socketId=(id_user)=>{
+    return db.query(`select socket_id from user where id_user="${id_user}"`)
+}

@@ -362,6 +362,9 @@ let btn_love =document.querySelectorAll(".btn-love-post")
 console.log(btn_love);
 btn_love.forEach((item,index)=>{
   item.addEventListener("click",()=>{
+   //realtime notifi with socket io
+    var socket=io();
+  
     if(item.style.color!="red"){
       console.log(111);
       console.log(index);
@@ -418,4 +421,10 @@ document.querySelector(".controller-user").addEventListener("click",()=>{
       window.location.href="http://localhost:3000/"
     }
   })
+})
+
+// edit post
+// close toast
+document.querySelector(".toast-button").addEventListener("click",()=>{
+  document.querySelector(".toat").style.visibility="hidden"
 })

@@ -38,7 +38,7 @@ module.exports.login =(req,res)=>{
     
    res.status(200).json({
     mess:"success!",
-    status:"sucess"
+    status:"sucess" 
    })
     
         // res.redirect("/")
